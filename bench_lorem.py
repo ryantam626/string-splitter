@@ -2,7 +2,7 @@ import os
 
 import pyximport; pyximport.install()
 
-from implementation import python_re, python_native, python_np_mask, cython_generator, cython_class
+from implementation import python_re, python_native, python_np_mask, cython_generator, cython_class, cython_generator2
 
 
 with open('./fixtures/lorem30.txt', 'r') as fd:
@@ -24,6 +24,11 @@ def cython_generator_runner():
         cython_generator.splitter(content)
 
 
+def cython_generator2_runner():
+    for _ in range(int(os.environ.get("REPEATS", 20))):
+        cython_generator2.splitter(content)
+
+
 def python_np_mask_runner():
     for _ in range(int(os.environ.get("REPEATS", 20))):
         python_np_mask.splitter(content)
@@ -37,6 +42,7 @@ def python_native_runner():
 __benchmarks__ = [
     (base_runner, cython_class_runner, "Cython class"),
     (base_runner, cython_generator_runner, "Cython generator"),
+    (base_runner, cython_generator2_runner, "Cython generator 2"),
     (base_runner, python_np_mask_runner, "Python Numpy mask"),
     (base_runner, python_native_runner, "Python native"),
 ]
