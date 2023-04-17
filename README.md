@@ -2,7 +2,7 @@
 
 
 ```bash
-REPEAT=200 richbench ./
+REPEATS=200 richbench ./
 ```
 
 ![benchmark exmaple](./pic.png)
