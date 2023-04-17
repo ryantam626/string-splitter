@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "string-splitter"
+version = "0.1.0"
+description = ""
+authors = ["Ryan Tam <ryantam626@gmail.com>"]
+readme = "README.md"
+packages = [{include = "string_splitter"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11.0"
+scalene = "^1.5.21"
+richbench = "^1.0.3"
+cython = "^0.29.34"
+numpy = "^1.24.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
