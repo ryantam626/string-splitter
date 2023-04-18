@@ -20,6 +20,17 @@ with open("./fixtures/lorem30.txt", "r") as fd:
     content = fd.read()
 
 
+import requests
+
+times_n = 1000
+
+r = requests.get(
+    "https://en.wikipedia.org/w/api.php?action=query&format=json&titles=Hannibal&prop=extracts"
+    "&exintro&explaintext&exsectionformat=raw"
+)
+content: str = next(iter(r.json()["query"]["pages"].values()))["extract"] * times_n
+
+
 def base_runner():
     for _ in range(int(os.environ.get("REPEATS", 20))):
         python_re.splitter(content)
