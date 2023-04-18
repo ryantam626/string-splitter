@@ -1,3 +1,4 @@
+import os
 import timeit
 
 import pyximport
@@ -91,7 +92,9 @@ def compute_style(hue: float) -> str:
 @click.option("--repeats", default=5, help="Number of times to repeat the content")
 @click.option("--times", default=5, help="Number of times to run the script")
 @click.option(
-    "--content-type", type=click.Choice(["lorem30", "lorem"]), default="lorem30"
+    "--content-type",
+    type=click.Choice([fname.strip(".txt") for fname in os.listdir("./fixtures")]),
+    default="lorem30",
 )
 def benchmark(repeats: int, times: int, content_type: str):
     global content
