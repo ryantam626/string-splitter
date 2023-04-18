@@ -1,3 +1,5 @@
+import datetime
+import json
 import os
 import timeit
 
@@ -113,9 +115,13 @@ def benchmark(repeats: int, times: int, content_type: str):
                 "min": min(timings),
                 "mean": fmean(timings),
                 "max": max(timings),
+                "timings": json.dumps(timings),  # YOLO!
             }
             for name, timings in results.items()
         ]
+    )
+    df_stats.to_csv(
+        f"./local/timings-{datetime.datetime.utcnow().isoformat()}.csv", index=False
     )
 
     for field in ["min", "max", "mean"]:
