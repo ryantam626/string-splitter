@@ -120,7 +120,7 @@ def benchmark(repeats: int, times: int, content_type: str):
 
     for field in ["min", "max", "mean"]:
         df_stats[f"hue_{field}"] = (
-            (df_stats[field].max() - df_stats[field] )
+            (df_stats[field].max() - df_stats[field])
             / (df_stats[field].max() - df_stats[field].min())
             * 150
         )
