@@ -120,7 +120,7 @@ def benchmark(repeats: int, times: int, content_type: str):
             for name, timings in results.items()
         ]
     )
-    df_stats.to_csv(
+    df_stats.assign(repeats=repeats, content_type=content_type).to_csv(
         f"./local/timings-{datetime.datetime.utcnow().isoformat()}.csv", index=False
     )
 
